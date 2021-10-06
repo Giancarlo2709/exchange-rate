@@ -7,6 +7,7 @@ import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
 import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateAllResponse;
 import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
+import com.bcp.reto.exchange.rate.model.entity.ExchangeRate;
 import com.bcp.reto.exchange.rate.repository.ExchangeHistoryRepository;
 import com.bcp.reto.exchange.rate.repository.ExchangeRateRepository;
 import io.reactivex.rxjava3.core.Flowable;
@@ -54,7 +55,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
   @Override
   public Maybe<ExchangeRateUpdateRequest> updateExchangeRate(ExchangeRateUpdateRequest exchangeRateUpdateRequest) {
-    return Maybe.just(exchangeRateRepository.findByCurrencyCodeOrigAndCurrencyCodeDestAndExchangeRateDate(
+    return Maybe.just(this.exchangeRateRepository.findByCurrencyCodeOrigAndCurrencyCodeDestAndExchangeRateDate(
             exchangeRateUpdateRequest.getCurrencyCodeOrig(),
             exchangeRateUpdateRequest.getCurrencyCodeDest(),
             exchangeRateUpdateRequest.getExchangeRateDate()))
@@ -64,7 +65,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
             })
             .switchIfEmpty(Maybe.error(new Exception(errorMessagesProperties.getExchangeRateNotFound())))
             .map(result -> {
-              exchangeRateRepository.save(
+              this.exchangeRateRepository.save(
                       ExchangeRateAdapter.updateExchangeRate(result, exchangeRateUpdateRequest));
               return exchangeRateUpdateRequest;
             });
@@ -72,8 +73,13 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
   @Override
   public Flowable<ExchangeRateAllResponse> findAll() {
-    return Flowable.fromIterable(exchangeRateRepository.findAll()
+    return Flowable.fromIterable(this.exchangeRateRepository.findAll()
             .stream().map(ExchangeRateAdapter::findAllResponse)
             .collect(Collectors.toList()));
+  }
+
+  @Override
+  public Maybe<ExchangeRate> findById(Long id) {
+    return Maybe.just(this.exchangeRateRepository.findById(id).orElse(null));
   }
 }
