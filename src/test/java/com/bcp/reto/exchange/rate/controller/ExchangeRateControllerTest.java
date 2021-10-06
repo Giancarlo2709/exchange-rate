@@ -1,9 +1,9 @@
 package com.bcp.reto.exchange.rate.controller;
 
 import com.bcp.reto.exchange.rate.business.ExchangeRateService;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetRequest;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetResponse;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateUpdateRequest;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import io.reactivex.rxjava3.core.Maybe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package com.bcp.reto.exchange.rate.business;
 
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetRequest;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetResponse;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateUpdateRequest;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import io.reactivex.rxjava3.core.Maybe;
 
 public interface ExchangeRateService {

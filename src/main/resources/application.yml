@@ -32,3 +32,7 @@ exchange-rate:
   error:
     exchange-rate-not-found: Tipo de cambio no encontrado
     exchange-rate-error-server: Ocurrio un error en el servidor
+
+application:
+  jwtSecret: ZWZxZ2prcWduZ3dvZ2h3cWl1Z2praGhmaHFvcDU2NzU0NDEyNDEyYmJzdnMzNTM2NmVmd25rZndmcWZxZnFmcWZramV3aG9mbmh3aWY2NzY0NTU2NGV3ZmpvZWZ3bW5oZWZiaXd1aCBmZXdvaTY4NzU3NjQ1M2ZnbC0uNzg3Ly8vL2plZndoaWdmZWl3ZndnZXdn
+  jwtExpirationInSeconds: 300

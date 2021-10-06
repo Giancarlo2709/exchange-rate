@@ -1,8 +1,8 @@
 package com.bcp.reto.exchange.rate.adapter;
 
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetRequest;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetResponse;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateUpdateRequest;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import com.bcp.reto.exchange.rate.model.entity.ExchangeHistory;
 import com.bcp.reto.exchange.rate.model.entity.ExchangeRate;
 

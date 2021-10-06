@@ -2,8 +2,8 @@ package com.bcp.reto.exchange.rate.business;
 
 import com.bcp.reto.exchange.rate.business.impl.ExchangeRateServiceImpl;
 import com.bcp.reto.exchange.rate.config.ErrorMessagesProperties;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateGetRequest;
-import com.bcp.reto.exchange.rate.model.api.ExchangeRateUpdateRequest;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import com.bcp.reto.exchange.rate.model.entity.ExchangeHistory;
 import com.bcp.reto.exchange.rate.model.entity.ExchangeRate;
 import com.bcp.reto.exchange.rate.repository.ExchangeHistoryRepository;

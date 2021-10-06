@@ -1,4 +1,4 @@
-package com.bcp.reto.exchange.rate.model.api;
+package com.bcp.reto.exchange.rate.model.api.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
