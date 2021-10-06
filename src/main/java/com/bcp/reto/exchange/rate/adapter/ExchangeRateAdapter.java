@@ -1,6 +1,7 @@
 package com.bcp.reto.exchange.rate.adapter;
 
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateAllResponse;
 import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import com.bcp.reto.exchange.rate.model.entity.ExchangeHistory;
@@ -39,5 +40,15 @@ public class ExchangeRateAdapter {
                                                ExchangeRateUpdateRequest request) {
     exchangeRate.setAmount(request.getExchangeRateAmount());
     return exchangeRate;
+  }
+
+  public static ExchangeRateAllResponse findAllResponse(ExchangeRate exchangeRate) {
+    return ExchangeRateAllResponse.builder()
+            .id(exchangeRate.getId())
+            .currencyCodeOrig(exchangeRate.getCurrencyCodeOrig())
+            .currencyCodeDest(exchangeRate.getCurrencyCodeDest())
+            .amount(exchangeRate.getAmount())
+            .exchangeRateDate(exchangeRate.getExchangeRateDate())
+            .build();
   }
 }

@@ -2,15 +2,19 @@ package com.bcp.reto.exchange.rate.controller;
 
 import com.bcp.reto.exchange.rate.business.ExchangeRateService;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateAllResponse;
 import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,5 +71,21 @@ public class ExchangeRateController {
           })
   public Maybe<ExchangeRateUpdateRequest> updateExchange(@RequestBody ExchangeRateUpdateRequest exchangeRateUpdateRequest)  {
     return this.exchangeRateService.updateExchangeRate(exchangeRateUpdateRequest);
+  }
+
+  @GetMapping(value = "/exchange", produces = {  MediaType.APPLICATION_JSON_VALUE})
+  @ApiResponse(responseCode = "200",
+          description = "Tipo de Cambio actualizado",
+          content = {
+                  @Content(array = @ArraySchema(schema =
+                  @Schema(implementation = ExchangeRateAllResponse.class)))
+          })
+  @ApiResponse(responseCode = "500",
+          description = "ERROR",
+          content = {
+                  @Content(schema = @Schema(implementation = Exception.class))
+          })
+  public Flowable<ExchangeRateAllResponse> findAll() {
+    return this.exchangeRateService.findAll();
   }
 }

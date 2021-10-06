@@ -4,16 +4,19 @@ import com.bcp.reto.exchange.rate.adapter.ExchangeRateAdapter;
 import com.bcp.reto.exchange.rate.business.ExchangeRateService;
 import com.bcp.reto.exchange.rate.config.ErrorMessagesProperties;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateGetRequest;
+import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateAllResponse;
 import com.bcp.reto.exchange.rate.model.api.response.ExchangeRateGetResponse;
 import com.bcp.reto.exchange.rate.model.api.request.ExchangeRateUpdateRequest;
 import com.bcp.reto.exchange.rate.repository.ExchangeHistoryRepository;
 import com.bcp.reto.exchange.rate.repository.ExchangeRateRepository;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -65,5 +68,12 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
                       ExchangeRateAdapter.updateExchangeRate(result, exchangeRateUpdateRequest));
               return exchangeRateUpdateRequest;
             });
+  }
+
+  @Override
+  public Flowable<ExchangeRateAllResponse> findAll() {
+    return Flowable.fromIterable(exchangeRateRepository.findAll()
+            .stream().map(ExchangeRateAdapter::findAllResponse)
+            .collect(Collectors.toList()));
   }
 }

@@ -1,15 +1,24 @@
-package com.bcp.reto.exchange.rate.model.api.request;
+package com.bcp.reto.exchange.rate.model.api.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Builder
 @Getter
 @Setter
-public class ExchangeRateUpdateRequest {
+public class ExchangeRateAllResponse {
+
+  @Schema(type = "Long",
+          name = "id",
+          description = "Id",
+          example = "1"
+  )
+  private Long id;
 
   @Schema(type = "String",
           name = "currencyCodeOrig",
@@ -26,11 +35,11 @@ public class ExchangeRateUpdateRequest {
   private String currencyCodeDest;
 
   @Schema(type = "String",
-          name = "exchangeRateAmount",
-          description = "Amount to convert",
-          example = "5.0"
+          name = "amount",
+          description = "Exchange rate",
+          example = "4.15"
   )
-  private BigDecimal exchangeRateAmount;
+  private BigDecimal amount;
 
   @Schema(type = "String",
           name = "exchangeRateDate",
